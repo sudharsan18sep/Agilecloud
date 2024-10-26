@@ -118,7 +118,7 @@ def data_filtering_pipeline = [
 		"country", // country field from country_gni collection
 		"gni_info" // output collection for the matched documents
 	),
-	unwind( // expand/split gni_info to access gni data
+	unwind( // expand gni_info to access gni data
 		"\$gni_info", new UnwindOptions().preserveNullAndEmptyArrays(true)
 	),
 	project(new Document([ // 1st stage of projection: extract country, price, review_score_rating, gni_2019
@@ -162,7 +162,7 @@ def data_combination_pipeline = [
 		"country", // country field from country_gni collection
 		"gni_info" // output collection for the matched documents
 	),
-	unwind( // expand/split gni_info to access gni data
+	unwind( // expand gni_info to access gni data
 		"\$gni_info", new UnwindOptions().preserveNullAndEmptyArrays(true)
 	),
 	project(new Document([ // 1st stage of projection: extract country, price, review_score_rating, gni_2019
