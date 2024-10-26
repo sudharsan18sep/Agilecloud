@@ -32,11 +32,13 @@ def printResult(exercise, col, pipeline) {
 	result.each { println it }
 }
 
+String connectionString = "mongodb+srv://${properties.USN}:${properties.PWD}@cluster0.${properties.SERVER}.mongodb.net/?retryWrites=true&w=majority&appName=${properties.DB}";
+
 // Create connection: replace <YOUR-CONNECTION-STRING> with the corresponding part of your connection string
-def mongoClient = MongoClients.create("mongodb+srv://<YOUR-CONNECTION-STRING>?retryWrites=true&w=majority")
+def mongoClient = MongoClients.create(connectionString)
 // replace properties.DB with the name of your DB
 def db = mongoClient.getDatabase(properties.DB)
-def col = db.getCollection("movies")
+def col = db.getCollection("listingsAndReviews")
 
 
 
